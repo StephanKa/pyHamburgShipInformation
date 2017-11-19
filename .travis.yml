@@ -1,0 +1,38 @@
+sudo: required
+language: python
+python:
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.6-dev"
+  - "3.7-dev" # 3.7 development branch
+  - "nightly"
+addons:
+  apt:
+    packages:
+      - unzip
+      # Java8 Required for Sonar and SQLCL
+      - oracle-java8-installer
+      - oracle-java8-set-default
+  sonarcloud:
+    organization: crafti5-github
+    token:
+      secure: ${SONAR_TOKEN}
+    branches:
+      - master
+before_install:
+  - pip install coveralls
+install:
+  - pip install BeautifulSoup coverage requests mysql-connector
+script:
+  - cd tests
+  - coverage run --branch --source=../ tests.py
+  - coverage xml -i
+  - cd ..
+  - sonar-scanner
+  - cd tests
+  - coverage run --branch --source=../ tests.py
+after_success:
+    - coveralls

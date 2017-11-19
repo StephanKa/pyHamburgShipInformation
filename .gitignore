@@ -1,0 +1,4 @@
+*.pyc
+*.db
+tests/.coverage
+tests/coverage/test-results.xml
