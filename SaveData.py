@@ -3,6 +3,7 @@ try:
     import urllib2
 except:
     import urllib.request
+import base64
 import sys
 import sqlite3
 import setup
