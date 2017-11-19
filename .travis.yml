@@ -25,9 +25,13 @@ addons:
 before_install:
   - pip install coveralls
 install:
-  - pip install BeautifulSoup coverage requests mysql-connector-python==1.2.3
+  - pip install BeautifulSoup coverage requests
 script:
-  - cd tests
+  - git clone https://github.com/mysql/mysql-connector-python.git
+  - cd mysql-connector-python
+  - python ./setup.py build
+  - python ./setup.py install
+  - cd ../tests
   - coverage run --branch --source=../ tests.py
   - coverage xml -i
   - cd ..
