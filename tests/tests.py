@@ -58,6 +58,10 @@ class TestSqliteMain(unittest.TestCase):
 
     def test_main(self):
         """ test main with instantiation and saving data """
+        main.setup.DATABASE_TYPE = 'sqlite'
+        main.setup.PASSWORD = 'root'
+        main.setup.HOST = 'localhost'
+        main.setup.USER = 'root'
         main.main()
 
 
