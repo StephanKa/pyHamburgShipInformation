@@ -108,16 +108,6 @@ if(__name__ == '__main__'):
                     SUITE = unittest.TestLoader().loadTestsFromTestCase(eval(TEST_CASE))
                 else:
                     raise Exception('ERROR: invalid test case specification!')
-        # set the test runner with parameters (description, verbosity, stream)
-        # description means the test method description
-        # verbosity is the output for the test suite
-        # stream is a stream that can be output to other instances for example see code below:
-        #
-        # from StringIO import StringIO
-        #
-        # stream = StringIO()
-        # runner = unittest.TextTestRunner(stream = stream)
-        # print('Test Output\n{}'.format(stream.read()))
         RUNNER = unittest.TextTestRunner(descriptions=False, verbosity=2)
         TEST_RESULTAT = RUNNER.run(SUITE)
         print('Time elapsed: {0}sec'.format(time.time() - BEGIN_TIME))
