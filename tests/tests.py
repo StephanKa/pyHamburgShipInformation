@@ -61,6 +61,18 @@ class TestMain(unittest.TestCase):
         main.main()
 
 
+class TestMysqlMain(unittest.TestCase):
+        """ Testcase for testing whole program """
+
+    def test_main(self):
+        """ test main with instantiation and saving data """
+        main.setup.DATABASE_TYPE = 'mysql'
+        main.setup.PASSWORD = ''
+        main.setup.HOST = '127.0.0.1'
+        main.setup.USER = 'root'
+        main.main()
+
+
 if(__name__ == '__main__'):
     BEGIN_TIME = time.time()
     SUITE = unittest.TestSuite()

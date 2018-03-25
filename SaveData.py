@@ -67,17 +67,19 @@ class SaveData(object):
         return self.cursor.fetchall()[0][0]
 
     def _insert_arrival(self, ship_id):
-        command = self.insert_command + ''' ship_hamburg_eta (eta, anchorage, F_SHIP_ID) VALUES ("{0}", "{1}", {2})'''.format(self.ship_info.time_eta,
-                                                                                                                              self.ship_info.ship_anchorage,
-                                                                                                                              ship_id)
+        command = self.insert_command + ''' ship_hamburg_eta (eta, anchorage, F_SHIP_ID)
+                                            VALUES ("{0}", "{1}", {2})'''.format(self.ship_info.time_eta,
+                                                                                 self.ship_info.ship_anchorage,
+                                                                                 ship_id)
         self.cursor.execute(command)
         self.conn.commit()
 
     def _insert_name(self):
-        command = self.insert_command + ''' ship_name (name, length, teu, type, image, imo) VALUES ("{0}", {1}, {2}, "{3}", "{4}", {5})'''.format(self.ship_info.ship_name,
-                                                                                                                                                  self.ship_info.ship_length,
-                                                                                                                                                  self.ship_info.teu,
-                                                                                                                                                  self.ship_info.ship_type,
-                                                                                                                                                  self._get_image(),
-                                                                                                                                                  self.ship_info.imo)
+        command = self.insert_command + ''' ship_name (name, length, teu, type, image, imo)
+                                            VALUES ("{0}", {1}, {2}, "{3}", "{4}", {5})'''.format(self.ship_info.ship_name,
+                                                                                                  self.ship_info.ship_length,
+                                                                                                  self.ship_info.teu,
+                                                                                                  self.ship_info.ship_type,
+                                                                                                  self._get_image(),
+                                                                                                  self.ship_info.imo)
         self.cursor.execute(command)
