@@ -53,7 +53,7 @@ class TestShipParser(unittest.TestCase):
         self.assertEqual(temp.ship_list[0].ship_type, 'Containerschiff')
 
 
-class TestMain(unittest.TestCase):
+class TestSqliteMain(unittest.TestCase):
     """ Testcase for testing whole program """
 
     def test_main(self):
@@ -62,7 +62,7 @@ class TestMain(unittest.TestCase):
 
 
 class TestMysqlMain(unittest.TestCase):
-        """ Testcase for testing whole program """
+    """ Testcase for testing whole program """
 
     def test_main(self):
         """ test main with instantiation and saving data """
